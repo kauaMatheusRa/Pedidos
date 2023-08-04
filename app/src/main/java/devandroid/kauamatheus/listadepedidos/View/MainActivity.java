@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements Interface.ClickRe
     EditText editQuantidade;
     EditText editPreco;
 
-//    Button btexcluir;
+    Button btnLimpar;
 
     Item pedidos;
 
@@ -61,12 +61,16 @@ public class MainActivity extends AppCompatActivity implements Interface.ClickRe
         editQuantidade = findViewById(R.id.editQuantidade);
         editPreco = findViewById(R.id.editTextPreco);
 
-//        btexcluir.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                listadb.deletarRegistro("Lista", idParaDeletar);
-//            }
-//        });
+        Button btnLimpar = findViewById(R.id.button);
+
+        btnLimpar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                limparRecyclerView(); // Limpar as informações do RecyclerView
+                limparBancoDeDados(); // Limpar as informações do banco de dados
+                Toast.makeText(MainActivity.this, "Dados limpos!", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         setaRecyclerView();
@@ -92,6 +96,17 @@ public class MainActivity extends AppCompatActivity implements Interface.ClickRe
 
         adc = findViewById(R.id.idButtonAdicionar);
 
+    }
+
+    private void limparRecyclerView() {
+        itemListas.clear(); // Limpar a lista de itens exibidos no RecyclerView
+        adapter.notifyDataSetChanged(); // Notificar o Adapter para que a alteração seja refletida na RecyclerView
+    }
+
+    private void limparBancoDeDados() {
+        Lista_DB listaDb = new Lista_DB(MainActivity.this);
+        listaDb.limparTabela("Lista"); // Chama o método limparTabela() da classe Lista_DB para apagar todos os registros da tabela "Lista"
+        listaDb.close(); // Fechar o banco de dados
     }
 
     /**

@@ -46,9 +46,13 @@ public class Lista_DB extends SQLiteOpenHelper {
 
     }
 
-//    public void deletarRegistro(String tabela, long id) {
-//        String whereClause = "id=?";
-//        String[] whereArgs = {String.valueOf(id)};
-//        db.delete(tabela, whereClause, whereArgs);
-//    }
+    public void limparTabela(String tabela) {
+        // Verificar se o banco de dados está aberto
+        if (db == null || !db.isOpen()) {
+            db = getWritableDatabase(); // Abrir o banco de dados se não estiver aberto
+        }
+
+        // Executar a operação SQL de DELETE
+        db.delete(tabela, null, null);
+    }
 }
