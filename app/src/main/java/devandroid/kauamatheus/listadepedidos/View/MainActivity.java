@@ -12,28 +12,34 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import devandroid.kauamatheus.listadepedidos.Controller.CalcularTotal;
 import devandroid.kauamatheus.listadepedidos.Controller.Controller_lista;
 import devandroid.kauamatheus.listadepedidos.Model.Adapter;
 import devandroid.kauamatheus.listadepedidos.Model.Interface;
 import devandroid.kauamatheus.listadepedidos.Model.Item;
 import devandroid.kauamatheus.listadepedidos.Model.order_item;
 import devandroid.kauamatheus.listadepedidos.R;
+import devandroid.kauamatheus.listadepedidos.database.Lista_DB;
 
 public class MainActivity extends AppCompatActivity implements Interface.ClickRecyclerView_Interface{
 
-    List<String> itens;
-
-    Spinner spinner;
     EditText editNome;
     EditText editQuantidade;
     EditText editPreco;
 
+//    Button btexcluir;
+
+    Item pedidos;
+
     Controller_lista controller_lista;
+
+//    Lista_DB listadb;
 
 
     private RecyclerView mRecyclerView;
@@ -48,10 +54,19 @@ public class MainActivity extends AppCompatActivity implements Interface.ClickRe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        pedidos = new Item();
+//        listadb = new Lista_DB(this);
 
         editNome = findViewById(R.id.editAdicionarItem);
         editQuantidade = findViewById(R.id.editQuantidade);
-        editPreco = findViewById()
+        editPreco = findViewById(R.id.editTextPreco);
+
+//        btexcluir.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+////                listadb.deletarRegistro("Lista", idParaDeletar);
+//            }
+//        });
 
 
         setaRecyclerView();
@@ -100,10 +115,16 @@ public class MainActivity extends AppCompatActivity implements Interface.ClickRe
             public void onClick(View v) {
 
 
+
                 Item itens = new Item();
                 itens.setNome(editNome.getText().toString());
-//              itens.setNome(editNome.getText().toString());
-                itens.setQntd(editQuantidade.getText().toString());
+                itens.setQntd(Integer.parseInt(editQuantidade.getText().toString()));
+                itens.setPreco(Double.parseDouble(editPreco.getText().toString()));
+
+
+                double resultado = CalcularTotal.calcularTotal(itens.getQntd(),itens.getPreco());
+                itens.setTotal(String.valueOf(resultado));
+
 
                 controller_lista.salvar(itens);
 
@@ -112,8 +133,13 @@ public class MainActivity extends AppCompatActivity implements Interface.ClickRe
                 itemListas.add(itens);
                 adapter.notifyDataSetChanged();
 
+
+
             }
         });
+
+
+
     }
 }
 

@@ -117,8 +117,8 @@
                 <LinearLayout
                     android:id="@+id/linear_itenslistas"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
                     android:layout_marginTop="20dp"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -144,15 +144,15 @@
 
                                 <TextView
                                     android:id="@+id/TextViewNome"
-                                    android:layout_width="217dp"
+                                    android:layout_width="131dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="10dp"
-                                    android:text="Nome"
+                                    android:text="Produto"
                                     android:textSize="14dp"
                                     android:textStyle="bold" />
 
                                 <TextView
-                                    android:id="@+id/textViewQntd"
+                                    android:id="@+id/textViewQnt"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:hint="Qtnd"
@@ -160,13 +160,22 @@
                                     android:textStyle="bold" />
 
                                 <TextView
-                                    android:id="@+id/textViewTotal"
-                                    android:layout_width="95dp"
+                                    android:id="@+id/textViewPreco"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="30dp"
+                                    android:layout_marginLeft="20dp"
+                                    android:layout_marginRight="20dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center"
+                                    android:text="Preco"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:id="@+id/textViewTotal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:layout_marginRight="10dp"
                                     android:layout_weight="1"
-                                    android:hint="Total"
                                     android:text="Total"
                                     android:textStyle="bold" />
 
@@ -178,29 +187,38 @@
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="38dp"
-                        android:gravity="bottom"
-                        android:orientation="vertical">
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom">
 
                         <View
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="30dp"
                             android:background="@android:color/darker_gray" />
 
                     </LinearLayout>
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/RecyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:listitem="@layout/activity_order_item"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="20dp" />
-
                 </LinearLayout>
 
-            </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/RecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/activity_order_item" >
 
+                </androidx.recyclerview.widget.RecyclerView>
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="318dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#3F51B4"
+                    android:text="Desfazer lista" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

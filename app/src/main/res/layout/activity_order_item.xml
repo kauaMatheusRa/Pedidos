@@ -33,7 +33,7 @@
 
                     <TextView
                         android:id="@+id/TextViewNome"
-                        android:layout_width="217dp"
+                        android:layout_width="131dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:text="Produto"
@@ -49,10 +49,20 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/textViewTotal"
-                        android:layout_width="121dp"
+                        android:id="@+id/textViewPreco"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="Preco"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginRight="10dp"
                         android:layout_weight="1"
                         android:text="Total"

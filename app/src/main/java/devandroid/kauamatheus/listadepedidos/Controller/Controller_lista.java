@@ -30,6 +30,8 @@ public class Controller_lista extends Lista_DB {
         ContentValues dados = new ContentValues();
         dados.put("nome", lista.getNome());
         dados.put("quantidade",lista.getQntd());
+        dados.put("preco",lista.getPreco());
+        dados.put("total", lista.getTotal());
 
         salvarDados("Lista",dados);
     }
@@ -39,6 +41,8 @@ public class Controller_lista extends Lista_DB {
         ContentValues dados = new ContentValues();
         dados.put("nome", lista.getNome());
         dados.put("quantidade",lista.getQntd());
+        dados.put("preco",lista.getPreco());
+        dados.put("total", lista.getTotal());
 
         salvarDados("Lista",dados);
     }

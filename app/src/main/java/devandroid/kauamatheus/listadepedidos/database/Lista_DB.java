@@ -10,7 +10,7 @@ public class Lista_DB extends SQLiteOpenHelper {
 
 
     private static String DB_NAME = "Lista_DB";
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 4;
 
     Cursor cursor;
     SQLiteDatabase db;
@@ -28,16 +28,27 @@ public class Lista_DB extends SQLiteOpenHelper {
                 "nome TEXT," +
                 "quantidade TEXT)";
 
+
         db.execSQL(TabelaLista);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        if (newVersion > oldVersion) {
+            // Add the new column "preco" to the existing table
+            db.execSQL("ALTER TABLE Lista ADD COLUMN preco REAL");
+            db.execSQL("ALTER TABLE Lista ADD COLUMN total REAL");
+        }
     }
 
     public void salvarDados(String tabela, ContentValues dados){
         db.insert(tabela, null,dados);
 
     }
+
+//    public void deletarRegistro(String tabela, long id) {
+//        String whereClause = "id=?";
+//        String[] whereArgs = {String.valueOf(id)};
+//        db.delete(tabela, whereClause, whereArgs);
+//    }
 }

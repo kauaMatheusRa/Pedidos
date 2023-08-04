@@ -2,12 +2,11 @@ package devandroid.kauamatheus.listadepedidos.Controller;
 
 public class CalcularTotal{
 
-        public static double CalcularTotal(float qntd, float preco){
+        public static Double calcularTotal(double qntd, double preco){
 
-            float res;
+            double res;
 
-            res = qntd / preco;
-
+            res = qntd * preco;
 
             return res;
         }

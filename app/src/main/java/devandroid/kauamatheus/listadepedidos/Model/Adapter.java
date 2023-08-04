@@ -37,7 +37,9 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecyclerTesteViewHolde
         Item item = mList.get(i);
 
         viewHolder.viewNome.setText(item.getNome());
-        viewHolder.viewQntd.setText(item.getQntd());
+        viewHolder.viewQntd.setText(String.valueOf(item.getQntd()));
+        viewHolder.viewPreco.setText(String.valueOf(item.getPreco()));
+        viewHolder.viewTotal.setText(item.getTotal());
 
     }
 
@@ -51,12 +53,16 @@ public class Adapter extends RecyclerView.Adapter<Adapter.RecyclerTesteViewHolde
 
         protected TextView viewNome;
         protected TextView viewQntd;
+        protected TextView viewPreco;
+        protected TextView viewTotal;
 
         public RecyclerTesteViewHolder(final View itemView) {
             super(itemView);
 
             viewNome = (TextView) itemView.findViewById(R.id.TextViewNome);
             viewQntd = (TextView) itemView.findViewById(R.id.textViewQnt);
+            viewPreco = (TextView) itemView.findViewById(R.id.textViewPreco);
+            viewTotal = (TextView) itemView.findViewById(R.id.textViewTotal);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
